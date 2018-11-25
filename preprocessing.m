@@ -4,7 +4,7 @@ clc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %author: Cuifang Xie
 %date :2018 Nov 19
-%      声音预处理
+%      语音预处理
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% 声音输入
@@ -20,18 +20,11 @@ clc
 figure 
 plot(s1);
 title('signal');
-
+%短时傅里叶变换
 win_size =512;
 lap = 256;
-han_win = hamming(win_size); 
-nfft = win_size;
-[S1, F, T] = spectrogram(s1, win_size,lap, win_size, fs1);
 figure
-imagesc(T, F, log10(abs(S1)))
-colorbar
-set(gca, 'YDir', 'normal')
-xlabel('Time (secs)')
-ylabel('Freq (Hz)')
+plotshow(s1,win_size,lap,fs1)
 title('原始信号')
 
 %% 时频特性不明显做一次预加重试试
@@ -59,19 +52,9 @@ s1 = resample(s1,FS,fs1);
 win_size =128;
 lap = 64;
 han_win = hamming(win_size); 
-nfft = win_size;
-[S1, F, T] = spectrogram(s1, win_size,lap, win_size, FS);
 figure
-imagesc(T, F, log10(abs(S1)))
-colorbar
-set(gca, 'YDir', 'normal')
-xlabel('Time (secs)')
-ylabel('Freq (Hz)')
+plotshow(s1,win_size,lap,FS);
 title('降采样')
-
-
-
-
 
 
 
@@ -103,15 +86,9 @@ time1 = (1:length(dt1))/FS;
 
  win_size =512;
 lap = 256;
-han_win = hamming(win_size); 
-nfft = win_size;
-[S1, F, T] = spectrogram(dt1, win_size, lap,win_size, FS);
 figure
-imagesc(T, F, log10(abs(S1)))
-colorbar
-set(gca, 'YDir', 'normal')
-xlabel('Time (secs)')
-ylabel('Freq (Hz)')
+plotshow(dt1,win_size,lap,FS)
+
 title('截取后')
 figure 
 plot(dt1);
@@ -147,15 +124,8 @@ plot(dt1);
 
  win_size =512;
 lap = 256;
-han_win = hamming(win_size); 
-nfft = win_size;
-[S1, F, T] = spectrogram(dt1, win_size, lap,win_size, FS);
 figure
-imagesc(T, F, log10(abs(S1)))
-colorbar
-set(gca, 'YDir', 'normal')
-xlabel('Time (secs)')
-ylabel('Freq (Hz)')
+plotshow(dt1,win_size,lap,FS)
 title('低通滤波之后')
 
 

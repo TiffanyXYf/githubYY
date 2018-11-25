@@ -4,19 +4,19 @@ clc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %author: Cuifang Xie
 %date :2018 Nov 19
-%      ÓïÒôÔ¤´¦Àí
+%      å£°éŸ³é¢„å¤„ç†
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% ÉùÒôÊäÈë
+%% å£°éŸ³è¾“å…¥
 [s1,fs1] = audioread('B.wav');%wav,fs =16000
-% [s2,fs2] = audioread('ÇÃÖù×Ó.wav');
+% [s2,fs2] = audioread('æ•²æŸ±å­.wav');
 % [s3,fs3] = audioread('youkelili2.wav');%wav,fs =16000
 % [s4,fs4] = audioread('B');
 % [s1,fs1] = audioread('qiao2.wav');%wav,fs =16000
 % [s2,fs2] = audioread('B');
 % [s1,fs1] = audioread('qiao2.wav');%wav,fs =16000
 % [s2,fs2] = audioread('B');
-%% ¶ÌÊ±¸µÀïÒ¶±ä»»½µ²ÉÑùÇ°
+%% çŸ­æ—¶å‚…é‡Œå¶å˜æ¢é™é‡‡æ ·å‰
 figure 
 plot(s1);
 title('signal');
@@ -32,9 +32,9 @@ colorbar
 set(gca, 'YDir', 'normal')
 xlabel('Time (secs)')
 ylabel('Freq (Hz)')
-title('Ô­Ê¼ĞÅºÅ')
+title('åŸå§‹ä¿¡å·')
 
-%% Ê±ÆµÌØĞÔ²»Ã÷ÏÔ×öÒ»´ÎÔ¤¼ÓÖØÊÔÊÔ
+%% æ—¶é¢‘ç‰¹æ€§ä¸æ˜æ˜¾åšä¸€æ¬¡é¢„åŠ é‡è¯•è¯•
 % [s1] = preprocess(s1);
 % win_size =128;
 % lap = 64;
@@ -47,15 +47,15 @@ title('Ô­Ê¼ĞÅºÅ')
 % set(gca, 'YDir', 'normal')
 % xlabel('Time (secs)')
 % ylabel('Freq (Hz)')
-% title('Ô¤¼ÓÖØºó')
+% title('é¢„åŠ é‡å')
 % hold on
 
 FS = 12000;
-%% ĞÅºÅ½µ²ÉÑù
+%% ä¿¡å·é™é‡‡æ ·
 s1 = resample(s1,FS,fs1);
 % s2 = resample(s2,FS,fs2);
 % s3 = resample(s3,FS,fs3);
-%% ¶ÔS1×ö¶ÌÊ±¸µÀïÒ¶±ä»»½ØÈ¡Ç°
+%% å¯¹S1åšçŸ­æ—¶å‚…é‡Œå¶å˜æ¢æˆªå–å‰
 win_size =128;
 lap = 64;
 han_win = hamming(win_size); 
@@ -67,7 +67,7 @@ colorbar
 set(gca, 'YDir', 'normal')
 xlabel('Time (secs)')
 ylabel('Freq (Hz)')
-title('½µ²ÉÑù')
+title('é™é‡‡æ ·')
 
 
 
@@ -77,7 +77,7 @@ title('½µ²ÉÑù')
 
 % noise  = 0.001*randn(1,length(s1));
 % s1 = s1+noise';
-%% ×öÂË²¨ºÍ½ØÈ¡
+%% åšæ»¤æ³¢å’Œæˆªå–
 
 N =30;flag = 1;bound = 0.001;
 [dt1] = low_filter(s1,N,flag,bound);
@@ -99,7 +99,7 @@ time1 = (1:length(dt1))/FS;
 %     end
 %             
 % end
-%% ×ö¶ÌÊ±¸µÀïÒ¶±ä»»½ØÈ¡ºó
+%% åšçŸ­æ—¶å‚…é‡Œå¶å˜æ¢æˆªå–å
 
  win_size =512;
 lap = 256;
@@ -112,7 +112,7 @@ colorbar
 set(gca, 'YDir', 'normal')
 xlabel('Time (secs)')
 ylabel('Freq (Hz)')
-title('½ØÈ¡ºó')
+title('æˆªå–å')
 figure 
 plot(dt1);
 
@@ -122,7 +122,7 @@ plot(dt1);
 
 
 
-%% ¼ÓÖÜÆÚĞÔĞÅºÅ
+%% åŠ å‘¨æœŸæ€§ä¿¡å·
 % t11 = linspace(-10,10,length(dt1))';
 % noise1 = 0.01*cos(2*pi*t11);
 % dt1 = noise1+dt1;
@@ -137,13 +137,13 @@ plot(dt1);
 % noise3 = 0.01*cos(2*pi*t33);
 % dt3 = noise3+dt3;
 % plot(1:length(dt3),noise3)
-%% ½ØÈ¡ĞÅºÅºó½øĞĞµÍÍ¨ÂË²¨£¨½µÔë£©
+%% æˆªå–ä¿¡å·åè¿›è¡Œä½é€šæ»¤æ³¢ï¼ˆé™å™ªï¼‰
 [dt1] = low_filter(dt1,2,0);
 % [dt2] = low_filter(dt2,2,0);
 % [dt3] = low_filter(dt3,2,0);
 
 
-%% ¶ÌÊ±¸µÀïÒ¶±ä»»½µÔëÖ®ºó
+%% çŸ­æ—¶å‚…é‡Œå¶å˜æ¢é™å™ªä¹‹å
 
  win_size =512;
 lap = 256;
@@ -156,7 +156,7 @@ colorbar
 set(gca, 'YDir', 'normal')
 xlabel('Time (secs)')
 ylabel('Freq (Hz)')
-title('µÍÍ¨ÂË²¨Ö®ºó')
+title('ä½é€šæ»¤æ³¢ä¹‹å')
 
 
 
